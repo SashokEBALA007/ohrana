@@ -1,399 +1,367 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Заводской отдел охраны | Приглашаем на работу</title>
-    <!-- Подключаем библиотеку иконок Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            background: #0b202b;
-            color: #1e2a3a;
-            line-height: 1.4;
-            padding: 20px 16px 40px;
-            position: relative;
-        }
+<title>Операция: Birthday Strike</title>
 
-        /* --- Фоновый слой: эмблема по центру, иконки по бокам --- */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* 1. Ваша эмблема по центру (ссылка, которую вы прислали) */
-            background-image: url("https://www.slavgorod.by/wp-content/uploads/2026/04/photo_2026-04-01_16-02-22.jpg");
-            background-size: auto 38%;  /* регулируйте размер эмблемы */
-            background-position: center 87%;
-            background-repeat: no-repeat;
-    
-            pointer-events: none;
-            z-index: 0;
-        }
+<style>
 
-        /* 2. Иконки для ДПУ и электромонтера — тоже на фоне, по бокам от эмблемы */
-        body::after {
-            content: "🖥️🔧";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect x="70" y="70" width="60" height="60" fill="none" stroke="%23c7a952" stroke-width="1.5"/></svg>'), /* условный ДПУ */
-                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="90" cy="110" r="20" fill="none" stroke="%23c7a952" stroke-width="1.5"/><circle cx="110" cy="90" r="20" fill="none" stroke="%23c7a952" stroke-width="1.5"/></svg>'); /* условный электромонтер */
-            background-size: 60px 60px, 55px 55px;
-            background-position: left 15% center, right 15% center;
-            background-repeat: no-repeat, no-repeat;
-            opacity: 0.1;
-            pointer-events: none;
-            z-index: 0;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        /* Дополнительная микро-текстура для солидности */
-        .bg-texture {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle at 15% 30%, rgba(199,162,82,0.08) 2%, transparent 2.5%),
-                              radial-gradient(circle at 75% 60%, rgba(199,162,82,0.06) 1.5%, transparent 2%);
-            background-size: 40px 40px, 35px 35px;
-            pointer-events: none;
-            z-index: 0;
-        }
+body{
+    min-height:100vh;
 
-        /* --- Карточка с контентом (остаётся читаемой на любом фоне) --- */
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 32px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-            overflow: hidden;
-            position: relative;
-            z-index: 2;
-        }
+    background:
+    linear-gradient(rgba(0,0,0,0.7),
+    rgba(0,0,0,0.8)),
+    url("https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1600&q=80");
 
-        /* --- Шапка --- */
-        .header {
-            background: #0b2b3b;
-            padding: 24px 20px;
-            text-align: center;
-            color: white;
-            border-bottom: 2px solid #c7a252;
-        }
-        .badge {
-            display: inline-block;
-            background: #c7a252;
-            color: #0b2b3b;
-            font-weight: bold;
-            font-size: 14px;
-            padding: 4px 12px;
-            border-radius: 30px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 6px;
-        }
-        .header p {
-            font-size: 16px;
-            opacity: 0.85;
-        }
+    background-size:cover;
+    background-position:center;
 
-        /* --- Основной контент --- */
-        .content {
-            padding: 24px 20px;
-        }
+    color:white;
+}
 
-        /* --- Пригласительный блок --- */
-        .invite {
-            background: #f0f6fa;
-            border-left: 5px solid #c7a252;
-            padding: 16px 18px;
-            margin-bottom: 28px;
-            border-radius: 16px;
-        }
-        .invite h2 {
-            font-size: 22px;
-            color: #0b2b3b;
-            margin-bottom: 8px;
-        }
-        .invite .address {
-            font-weight: 500;
-            color: #2c5a6e;
-            margin-top: 8px;
-            font-size: 16px;
-        }
+/* ЭКРАНЫ */
 
-        /* --- Заголовки секций --- */
-        .section {
-            margin-bottom: 28px;
-        }
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0b2b3b;
-            border-bottom: 3px solid #c7a252;
-            display: inline-block;
-            padding-bottom: 4px;
-            margin-bottom: 16px;
-        }
-        .list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .list li {
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-            font-size: 15px;
-        }
-        .list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #c7a252;
-            font-weight: bold;
-        }
+.screen{
+    display:none;
+    min-height:100vh;
 
-        /* --- Вакансии с иконками (теперь и наглядно, и подписано) --- */
-        .vacancies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin: 16px 0 20px;
-        }
-        .vacancy-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 14px 18px;
-            flex: 1 1 200px;
-            border: 1px solid #e2e8f0;
-            transition: 0.2s;
-            text-align: center;
-        }
-        .vacancy-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-            color: #c7a252;
-        }
-        .vacancy-card strong {
-            font-size: 17px;
-            color: #0b2b3b;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .vacancy-card span {
-            font-size: 13px;
-            color: #3a6b7e;
-        }
+    justify-content:center;
+    align-items:center;
 
-        /* --- Преимущества (стиль) --- */
-        .perks {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .perk {
-            background: #f0f4f8;
-            border-radius: 40px;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #1e4660;
-        }
+    padding:20px;
+}
 
-        /* --- Сетка требований --- */
-        .req-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            background: #fafcff;
-            border-radius: 20px;
-            padding: 16px;
-            border: 1px solid #dce5ec;
-        }
-        .req-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-        }
-        .req-icon {
-            font-size: 20px;
-            min-width: 28px;
-        }
+.active{
+    display:flex;
+}
 
-        /* --- Контакты --- */
-        .contacts {
-            background: #eef3f8;
-            border-radius: 24px;
-            padding: 18px;
-            margin-top: 10px;
-        }
-        .contacts p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            font-size: 15px;
-        }
-        .tel-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 12px 0 8px;
-        }
-        .tel {
-            background: white;
-            padding: 8px 14px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: #0b2b3b;
-            border: 1px solid #cbdbe2;
-        }
-        .address-block {
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 1px dashed #bdd3e4;
-        }
+/* БРИФИНГ */
 
-        /* --- Подвал --- */
-        .footer-note {
-            font-size: 12px;
-            text-align: center;
-            color: #6f8faa;
-            margin-top: 24px;
-            padding-top: 12px;
-            border-top: 1px solid #e2edf5;
-        }
-        a {
-            text-decoration: none;
-        }
-        .tel:active {
-            background: #e6edf4;
-            transform: scale(0.97);
-        }
-    </style>
+.briefing{
+    width:700px;
+    max-width:95%;
+
+    background:rgba(10,10,10,0.9);
+
+    border:2px solid #ff8c00;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    box-shadow:0 0 25px rgba(255,140,0,0.3);
+}
+
+.status{
+    color:#ff8c00;
+    font-size:14px;
+    letter-spacing:3px;
+    margin-bottom:12px;
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.subtitle{
+    color:#cccccc;
+    margin-bottom:25px;
+}
+
+.timer{
+    border:1px solid #444;
+    padding:15px;
+    margin:25px 0;
+    background:#111;
+    font-size:24px;
+    color:#00ff88;
+}
+
+.mission{
+    line-height:1.8;
+}
+
+/* КНОПКИ */
+
+button{
+    width:100%;
+    padding:18px;
+
+    border:none;
+
+    background:#ff8c00;
+    color:white;
+
+    font-size:20px;
+    font-weight:bold;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    margin-top:30px;
+
+    transition:.3s;
+}
+
+button:hover{
+    background:#ffa733;
+}
+
+/* АНКЕТА */
+
+.form-box{
+
+    width:700px;
+    max-width:95%;
+
+    background:rgba(10,10,10,0.95);
+
+    border:2px solid #2ecc71;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    box-shadow:0 0 25px rgba(46,204,113,0.25);
+}
+
+.form-box h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    color:#ccc;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:18px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#1a1a1a;
+    color:white;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.section-title{
+    margin:20px 0 10px;
+    color:#ff8c00;
+    font-weight:bold;
+}
+
+</style>
 </head>
+
 <body>
-<!-- Дополнительный слой текстуры (чтобы фон не был совсем плоским) -->
-<div class="bg-texture"></div>
 
-<div class="container">
-    <div class="header">
-        <div class="badge">ДЕПАРТАМЕНТ ОХРАНЫ МВД</div>
-        <h1>Заводской отдел<br>г. Минска</h1>
-        <p>стабильность • защита • профессионализм</p>
+<!-- ЭКРАН 1 -->
+
+<div id="screen1" class="screen active">
+
+    <div class="briefing">
+
+        <div class="status">
+            СЕКРЕТНАЯ ОПЕРАЦИЯ
+        </div>
+
+        <h1>Операция: Birthday Strike</h1>
+
+        <p class="subtitle">
+            Брифинг для участников спецотряда
+        </p>
+
+        <div class="timer">
+            Дата начала операции: 27 июня 10:20
+        </div>
+
+        <div class="mission">
+
+            <strong>Цель миссии:</strong><br>
+            Собрать элитный отряд бойцов и захватить
+            пейнтбольную арену в честь дня рождения.
+
+            <br><br>
+
+            <strong>Место:</strong>
+            База "Долгобродская, 43"
+            (Минск, ст. м. "Тракторный завод")
+
+            <br>
+
+            <strong>Задача:</strong>
+            Подтвердить участие и приготовиться к бою.
+
+        </div>
+
+        <button onclick="goToForm()">
+            ПРИНЯТЬ ЗАДАНИЕ
+        </button>
+
     </div>
 
-    <div class="content">
-        <!-- Приглашение -->
-        <div class="invite">
-            <h2>ПРИГЛАШАЕМ НА РАБОТУ!</h2>
-            <div class="address">📍 Заводской район, г. Минск</div>
+</div>
+
+<!-- ЭКРАН 2 -->
+
+<div id="screen2" class="screen">
+
+    <div class="form-box">
+
+        <h2>АНКЕТА БОЙЦА</h2>
+
+        <label>Позывной бойца</label>
+        <input id="name" placeholder="Введите имя">
+
+        <label>Готовы принять участие?</label>
+        <select id="status">
+            <option>Да, буду в строю</option>
+            <option>Не смогу участвовать</option>
+            <option>Пока под вопросом</option>
+        </select>
+
+        <div class="section-title">
+            Полевой рацион
         </div>
 
-        <!-- Вакансии -->
-        <div class="section">
-            <div class="section-title">Ищем</div>
-            <div class="vacancies">
-                <div class="vacancy-card">
-                    <div class="vacancy-icon"><i class="fas fa-desktop"></i></div>
-                    <strong>Дежурный пульта управления</strong>
-                    <span>централизованная охрана</span>
-                </div>
-                <div class="vacancy-card">
-                    <div class="vacancy-icon"><i class="fas fa-microchip"></i></div>
-                    <strong>Электромонтер ОПС</strong>
-                    <span>охранно-пожарная сигнализация</span>
-                </div>
-            </div>
+        <label>Пожелания по еде</label>
+        <textarea id="food"></textarea>
+
+        <div class="section-title">
+            Снабжение отряда
         </div>
 
-        <!-- Требования -->
-        <div class="section">
-            <div class="section-title">Требования к кандидатам</div>
-            <div class="req-grid">
-                <div class="req-item"><span class="req-icon">✅</span> Гражданство Республики Беларусь</div>
-                <div class="req-item"><span class="req-icon">✅</span> Высокие моральные и деловые качества</div>
-                <div class="req-item"><span class="req-icon">✅</span> Отсутствие судимости (привлечения к УО)</div>
-                <div class="req-item"><span class="req-icon">✅</span> Умение работать в команде</div>
-                <div class="req-item"><span class="req-icon">✅</span> Возраст до 70 лет</div>
-            </div>
+        <label>Напитки</label>
+        <textarea id="drinks"></textarea>
+
+        <div class="section-title">
+            Дополнительная информация
         </div>
 
-        <!-- Предлагаем -->
-        <div class="section">
-            <div class="section-title">Предлагаем</div>
-            <ul class="list">
-                <li>Стабильная зарплата от <strong>1200 руб.</strong> среднемесячная</li>
-                <li>Ежеквартальное премирование</li>
-                <li>Оплачиваемая переработка</li>
-                <li>Единовременное пособие на оздоровление при уходе в отпуск</li>
-                <li>Современные и комфортные условия труда</li>
-                <li>Официальное трудоустройство (контракт)</li>
-                <li>Трудовой отпуск от 27 календарных дней</li>
-                <li>Сменный график (возможны только дневные или только ночные смены)</li>
-            </ul>
-        </div>
+        <label>Что важно знать?</label>
+        <textarea id="extra"></textarea>
 
-        <!-- Документы -->
-        <div class="section">
-            <div class="section-title">При себе (в кадры)</div>
-            <div class="perks">
-                <span class="perk">📄 Паспорт</span>
-                <span class="perk">📘 Трудовая книжка</span>
-            </div>
-        </div>
+        <button onclick="sendData()">
+            ОТПРАВИТЬ ДАННЫЕ
+        </button>
 
-        <!-- Контакты -->
-        <div class="section">
-            <div class="section-title">Наши контакты</div>
-            <div class="contacts">
-                <p>🏢 <strong>г. Минск, ул. Машиностроителей, 6</strong></p>
-                <div class="tel-list">
-                    <a href="tel:+80172704893" class="tel">📞 8 (017) 270-48-93</a>
-                    <a href="tel:+80296749141" class="tel">📱 8 (029) 674-91-41</a>
-                    <a href="tel:+80297710980" class="tel">📱 8 (029) 771-09-80</a>
-                    <a href="tel:+80299249518" class="tel">📱 8 (029) 924-95-18</a>
-                </div>
-                <div class="address-block">
-                    <span>🕒 Отдел кадров: будние дни с 9:00 до 18:00</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-note">
-            Департамент охраны МВД Республики Беларусь<br>
-            Заводской отдел — надёжность, проверенная временем
-        </div>
     </div>
+
 </div>
 
 <script>
-    console.log("Сайт Заводского отдела охраны загружен");
+
+function goToForm(){
+
+    document
+    .getElementById("screen1")
+    .classList
+    .remove("active");
+
+    document
+    .getElementById("screen2")
+    .classList
+    .add("active");
+}
+
+function sendData(){
+
+    const name = document.getElementById("name").value;
+    const status = document.getElementById("status").value;
+    const food = document.getElementById("food").value;
+    const drinks = document.getElementById("drinks").value;
+    const extra = document.getElementById("extra").value;
+
+    if(name.trim() === ""){
+        alert("Введите имя!");
+        return;
+    }
+
+    /* ==========================
+       ВСТАВЬ СЮДА ТОКЕН БОТА
+       ========================== */
+
+    const TOKEN = "8789045496:AAHOePohvg6YDAOdSJ7Zaco38Ue9Ku67U00";
+
+    /* ==========================
+       ВСТАВЬ СЮДА CHAT ID
+       ========================== */
+
+    const CHAT_ID = "8697789661";
+
+    const message =
+`🎯 НОВЫЙ БОЕЦ
+
+👤 Имя: ${name}
+
+📌 Статус: ${status}
+
+🍖 Пожелания по еде:
+${food}
+
+🥤 Напитки:
+${drinks}
+
+⚠️ Дополнительная информация:
+${extra}`;
+
+    fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if(data.ok){
+            alert("МИССИЯ ПРИНЯТА ✔");
+        }else{
+            console.log(data);
+            alert("Ошибка Telegram");
+        }
+
+    })
+    .catch(error => {
+
+        console.log(error);
+        alert("Ошибка отправки");
+
+    });
+
+}
+
 </script>
 </body>
 </html>
